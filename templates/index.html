@@ -1,0 +1,166 @@
+{% extends 'includes/base.html' %}
+{% block pageTitle %}Home{% endblock %}
+{% block content %}
+    
+<!-- Age Verification Modal -->
+    <div id="ageVerificationModal" class="modal">
+        <div class="modal-content age-verification">
+            <div class="modal-icon">
+                <svg class="icon-large" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                </svg>
+            </div>
+            <h2 class="text-red">AGE VERIFICATION REQUIRED</h2>
+            <p class="text-center text-muted">
+                You must be <b>21 years</b> of age or older to access this website and purchase firearms or ammunition.
+            </p>
+            <div class="verification-notice">
+                <p class="text-small text-align-justify">
+                    By clicking <b>"I AM 21 OR OLDER"</b>, you certify that you are at least 21 years of age and are legally permitted to view and purchase firearms and ammunition in your jurisdiction.
+                </p>
+                <p class="text-small text-muted text-align-justify">
+                    Point Blank complies with all federal, state, and local laws regarding firearm sales. All purchases require proper background checks and compliance verification.
+                </p>
+            </div>
+            <div id="ageError" class="error-message" style="display: none;">
+                <p>You must be 21 or older to access this site. Redirecting...</p>
+            </div>
+            <div class="button-group">
+                <button onclick="verifyAge(true)" class="btn btn-primary btn-large">I AM 21 OR OLDER</button>
+                <button onclick="verifyAge(false)" class="btn btn-secondary btn-large">I AM UNDER 21</button>
+            </div>
+            <p class="text-tiny text-muted text-center">
+                This website uses session storage to remember your verification for this browsing session.
+            </p>
+        </div>
+    </div>
+    
+    <div class="page">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="container hero-content">
+                <div class="badge">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                        <circle cx="12" cy="12" r="1" fill="currentColor"/>
+                    </svg>
+                    LICENSED FFL DEALER
+                </div>
+                <h1>
+                    PRECISION.<br>
+                    POWER.<br>
+                    <span class="text-red">PROTECTION.</span>
+                </h1>
+                <p style="font-size: 1.25rem; color: var(--color-zinc-400); margin-bottom: 2rem; max-width: 42rem;">
+                    Welcome to Point Blank, your reliable destination for premium firearms, ammunition, and tactical accessories. We are committed to the highest standards of safety, quality, and full legal compliance.
+                </p>
+                <div class="hero-buttons">
+                    <a href="arsenal" class="nav-link anchor-underline"><button class="btn btn-primary">
+                        SHOP NOW
+                        <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button></a>
+                    <a href="about" class="nav-link anchor-underline"><button class="btn btn-outline">
+                        LEARN MORE
+                    </button></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Indicators -->
+        <section class="trust-section">
+            <div class="container">
+                <div class="trust-grid">
+                    <div class="trust-item">
+                        <div class="trust-icon">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div style="color: white; letter-spacing: 0.1em; margin-bottom: 0.25rem; font-weight: 600;">FFL LICENSED</div>
+                            <div class="text-small text-muted">Fully Compliant</div>
+                        </div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div style="color: white; letter-spacing: 0.1em; margin-bottom: 0.25rem; font-weight: 600;">SECURE SHIPPING</div>
+                            <div class="text-small text-muted">Fast & Discreet</div>
+                        </div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div style="color: white; letter-spacing: 0.1em; margin-bottom: 0.25rem; font-weight: 600;">TOP BRANDS</div>
+                            <div class="text-small text-muted">Premium Quality</div>
+                        </div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                                <circle cx="12" cy="12" r="1" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div style="color: white; letter-spacing: 0.1em; margin-bottom: 0.25rem; font-weight: 600;">EXPERT ADVICE</div>
+                            <div class="text-small text-muted">Knowledgeable Staff</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="text-red" style="letter-spacing: 0.15em; margin-bottom: 0.5rem;">FEATURED FIREARMS</h2>
+                    <p class="text-muted">Hand-selected premium firearms from trusted manufacturers</p>
+                </div>
+                <!-- Products -->
+                <div class="product-grid" style="margin-bottom: 3rem;">
+                    {% for i in firearms %}
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="media/{{ i.firearms_image }}" alt="{{ i.firearms_name }}">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-name text-center">{{ i.firearms_name }}</div>
+                            <div class="product-caliber">{{ i.firearms_caliber }}</div>
+                            <div class="product-footer">
+                                <span class="product-price"><span style="font-size: 1.1rem;">₹</span>{{ i.firearms_price }}</span>
+                                <a href="firearm_details?id={{i.id}}" target="blank" class="anchor-underline"><button class="product-link">
+                                    VIEW
+                                    <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                    </svg>
+                                </button></a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div style="text-align: center;">
+                    <a href="arsenal" class="nav-link anchor-underline"><button class="btn btn-outline">
+                        VIEW ALL FIREARMS
+                        <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </button></a>
+                </div>
+            </div>
+        </section> 
+    </div>
+{% endblock %}

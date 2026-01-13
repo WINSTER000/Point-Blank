@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point Blank - Failure</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="failure-container">
+        <div class="failure-background"></div>
+        
+        <div class="failure-content">
+            <!-- Error Icon -->
+            <div class="failure-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+            </div>
+
+            <!-- Error Message -->
+            <h1 class="failure-title">Payment Failed</h1>
+            <p class="failure-message">
+                We're sorry, but we couldn't process your payment. Please review the details below and try again.
+            </p>
+
+            <!-- Error Details -->
+            <div class="error-details">
+                <div class="error-code-box">
+                    <div class="error-code-label">Error Code:</div>
+                    <div class="error-code-value" id="errorCode">PAYMENT_DECLINED</div>
+                </div>
+                
+                <div class="error-reason">
+                    <h3>Possible Reasons:</h3>
+                    <ul class="error-list" id="errorReasons">
+                        <li>Insufficient funds</li>
+                        <li>Incorrect card details</li>
+                        <li>Card expired or inactive</li>
+                        <li>Transaction limit exceeded</li>
+                        <li>Payment declined by your bank</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="failed-order-summary">
+                <h2>Order Details</h2>
+                <div class="order-info">
+                    <div class="order-info-row">
+                        <span class="label">Attempted Amount:</span>
+                        <span class="value" id="attemptedAmount">₹{{ amount }}</span>
+                    </div>
+                    <div class="order-info-row">
+                        <span class="label">Date:</span>
+                        <span class="value" id="attemptDate">Loading...</span>
+                    </div>
+                    <div class="order-info-row">
+                        <span class="label">Time:</span>
+                        <span class="value" id="attemptTime">Loading...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What to Do Next -->
+            <div class="next-actions">
+                <h2>What Should I Do?</h2>
+                <div class="action-cards">
+                    <div class="action-card">
+                        <div class="action-icon" style="background-color: var(--color-red-600);">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                            </svg>
+                        </div>
+                        <h3>Try Another Card</h3>
+                        <p>Use a different payment method or card to complete your purchase.</p>
+                        <button class="btn btn-primary" onclick="window.location.href ='cart'">RETRY PAYMENT</button>
+                    </div>
+
+                    <div class="action-card">
+                        <div class="action-icon" style="background-color: var(--color-zinc-700);">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h3>Check Your Bank</h3>
+                        <p>Verify your card is active and has sufficient funds.</p>
+                        <a href="tel:5557625265" class="btn btn-outline anchor-underline">CALL BANK</a>
+                    </div>
+
+                    <div class="action-card">
+                        <div class="action-icon" style="background-color: var(--color-zinc-700);">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                        </div>
+                        <h3>Get Support</h3>
+                        <p>Contact our client support team for assistance with your payment.</p>
+                        <a href="mailto:pointblank@contact.org" class="btn btn-outline anchor-underline">EMAIL SUPPORT</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Preserved Notice -->
+            <div class="cart-notice">
+                <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <div>
+                    <strong>Don't worry!</strong> Your cart has been saved. You can try again whenever you're ready.
+                </div>
+            </div>
+
+            <!-- Alternative Actions -->
+            <div class="alternative-actions">
+                <a href="/" class="btn btn-secondary btn-large">
+                    <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    RETURN TO HOME
+                </a>
+                <a href="cart" class="btn btn-outline btn-large">
+                    <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                    VIEW CART
+                </a>
+            </div>
+
+            <!-- Contact Support -->
+            <div class="support-box">
+                <h3>Still Need Help?</h3>
+                <p class="text-muted mb-3">
+                    Our support team is available to assist you with payment issues.
+                </p>
+                <div class="contact-options">
+                    <div class="contact-option">
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <div>
+                            <div class="contact-label">Phone</div>
+                            <a href="tel:9867945175" class="contact-value">+91 9867945175</a>
+                        </div>
+                    </div>
+                    <div class="contact-option">
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <div>
+                            <div class="contact-label">Email</div>
+                            <a href="mailto:pointblank@contact.org" class="contact-value">pointblank@contact.org</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("attemptTime").innerText =
+            new Date().toLocaleString("en-IN", {
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit"
+            });
+        
+        document.getElementById("attemptDate").innerText =
+            new Date().toLocaleString("en-IN", {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+            });
+    </script>
+</body>
+</html>

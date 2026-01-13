@@ -1,0 +1,117 @@
+{% extends 'includes/base.html' %}
+{% block pageTitle %}{{ firearm_name }}{% endblock %}
+{% block content %}
+<div class="page">
+    <div class="container" style="padding: 2rem 1rem;">
+        <a href="arsenal" class="anchor-underline"><button class="btn btn-outline" style="margin-bottom: 2rem;">
+            <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+            Back to Arsenal
+        </button></a>
+
+        <div class="product-detail-grid">
+            <div class="product-detail-image">
+                <img src="media\{{ firearm_image }}" alt="{{ firearm_name }}">
+            </div>
+
+            <div class="product-detail-info">
+                <!-- <div class="product-category" style="margin-bottom: 0.5rem;">${product.category}</div> -->
+                <h1 style="margin-bottom: 1rem;">{{ firearm_name }}</h1>
+                <div class="product-detail-price"><span style="font-size: 2.2rem;">₹</span>{{ firearm_price }}</div>
+
+                <p class="text-muted" style="margin-bottom: 2rem; line-height: 1.7; text-align: justify;">
+                    {{ firearm_description }}
+                </p>
+
+                <div class="specifications">
+                    <h3 style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <svg class="icon text-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                        SPECIFICATIONS
+                    </h3>
+                    <div class="spec-row">
+                        <span class="spec-label">Ammo</span>
+                        <span class="spec-value">{{ firearm_ammo }}</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Ammo Capacity</span>
+                        <span class="spec-value">{{ firearm_ammo_capacity }}</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Caliber</span>
+                        <span class="spec-value">{{ firearm_caliber }}</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Barrel Length</span>
+                        <span class="spec-value">{{ firearm_barrel_length }}</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Overall Length</span>
+                        <span class="spec-value">{{ firearm_overall_length }}</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Weight</span>
+                        <span class="spec-value">{{ firearm_weight }}</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Finish</span>
+                        <span class="spec-value">{{ firearm_finish }}</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">Action</span>
+                        <span class="spec-value">{{ firearm_action }}</span>
+                    </div>
+                </div>
+                
+                <div>
+                <form action="add_to_cart?id={{ firearm_id }}" id="addToCartForm" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-primary add-to-cart-button" style="margin-bottom: 2rem;" name="add-to-cart" id="add-to-cart">
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                        ADD TO CART
+                    </button>
+                </form>
+                </div>
+
+                <div class="notice-box">
+                    <div class="notice-content">
+                        <svg class="icon text-red" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="flex-shrink: 0;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                        </svg>
+                        <div class="text-small" style="color: #fecaca;">
+                            <p class="mb-2"><strong>LEGAL REQUIREMENTS:</strong> Purchase of this firearm requires:</p>
+                            <ul style="margin-left: 1rem;">
+                                <li>• Must be 21+ years of age</li>
+                                <li>• Valid government-issued ID</li>
+                                <li>• Background check through licensed FFL</li>
+                                <li>• Compliance with all state and local laws</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extraJS %}
+    <script>
+        document.getElementById("addToCartForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: "Success",
+                text: "{{ firearm_name }} added Successfully!",
+                icon: "success",
+                showConfirmButton: true
+            }).then(() => {
+                this.submit();
+            });
+        });
+    </script>
+{% endblock %}

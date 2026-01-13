@@ -1,0 +1,96 @@
+{% extends 'includes/base.html' %}
+{% block pageTitle %}About Us{% endblock %}
+{% block content %}
+<div class="page">
+    <div style="background: linear-gradient(to right, var(--color-zinc-900), var(--color-black)); border-bottom: 1px solid var(--color-zinc-800); padding: 4rem 1rem;">
+        <div class="container">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+                <div class="logo-icon">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                        <circle cx="12" cy="12" r="1" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h1>
+                    About <span class="text-red">Point Blank</span>
+                </h1>
+            </div>
+            <p style="font-size: 1.25rem;" class="text-muted">
+                Precision, Power and Protection in Every Shot.
+            </p>
+        </div>
+    </div>
+
+    <div class="container section">
+        <h2 style="margin-bottom: 1.5rem;">Our Mission</h2>
+        <p class="text-muted text-align-justify" style="margin-bottom: 1rem; line-height: 1.7;">
+            Point Blank is designed as a responsible, education-focused firearms e-commerce platform that balances the rights of lawful ownership with a strong commitment to safety and compliance. The website serves as more than just an online storefront—it acts as a trusted resource for firearms enthusiasts who value knowledge, responsibility, and informed decision-making. Every section of the platform reinforces the idea that owning a firearm is a serious commitment that requires understanding, discipline, and respect for the law.
+        </p>
+        <p class="text-muted text-align-justify" style="margin-bottom: 1rem; line-height: 1.7;">
+            The e-commerce experience at Point Blank emphasizes transparency and legal awareness. Product listings are presented with clear descriptions, specifications, and safety notices, ensuring customers fully understand what they are viewing. Legal disclaimers and regulatory guidance are prominently displayed, helping customers navigate applicable federal, state, and local laws. This approach builds trust and ensures that every step of the purchasing journey aligns with legal requirements and ethical standards.
+        </p>
+        <p class="text-muted text-align-justify" style="line-height: 1.7;">
+            Education is a core pillar of the Point Blank platform. Beyond products, the website provides access to safety guides, responsible handling practices, and secure storage information. These resources are aimed at both new and experienced owners, reinforcing best practices such as proper firearm maintenance, safe transportation, and accident prevention. By prioritizing education, Point Blank supports a culture of accountability and long-term safety within the firearms community.
+        </p>
+        <p class="text-muted text-align-justify" style="line-height: 1.7;">
+            Point Blank also highlights the role of expert support throughout the customer journey. The platform represents a team of knowledgeable professionals who are passionate about firearms and trained to guide customers responsibly. Whether through detailed FAQs, expert-written articles, or customer support interactions, the focus remains on helping users make informed and lawful choices rather than impulsive purchases.
+        </p>
+        <p class="text-muted text-align-justify" style="line-height: 1.7;">
+            Overall, the Point Blank gun e-commerce website positions itself as a modern, responsible, and community-oriented platform. It combines professional presentation, educational depth, and strict compliance standards to create an environment where firearms ownership is treated with the seriousness it deserves. This approach not only strengthens customer confidence but also reinforces Point Blank’s mission to promote safe, legal, and responsible firearm ownership.
+        </p>
+    </div>
+
+    <div class="section" style="background-color: var(--color-zinc-900);">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 2rem;">Our Core Values</h2>
+            <div class="faq-grid">
+                <div class="faq-item text-center">
+                    <div style="width: 64px; height: 64px; background-color: var(--color-red-600); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                        <svg class="icon-large" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 style="margin-bottom: 0.75rem;">Safety First</h3>
+                    <p class="text-small text-muted">
+                        We prioritize firearm safety education and responsible ownership above all.
+                    </p>
+                </div>
+                <div class="faq-item text-center">
+                    <div style="width: 64px; height: 64px; background-color: var(--color-red-600); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                        <svg class="icon-large" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                            <circle cx="12" cy="12" r="1" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 style="margin-bottom: 0.75rem;">Precision</h3>
+                    <p class="text-small text-muted">
+                        We meticulously verify every firearm for quality and authenticity.
+                    </p>
+                </div>
+                <div class="faq-item text-center">
+                    <div style="width: 64px; height: 64px; background-color: var(--color-red-600); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                        <svg class="icon-large" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                        </svg>
+                    </div>
+                    <h3 style="margin-bottom: 0.75rem;">Excellence</h3>
+                    <p class="text-small text-muted">
+                        We offer only premium firearms that meet our strict standards.
+                    </p>
+                </div>
+                <div class="faq-item text-center">
+                    <div style="width: 64px; height: 64px; background-color: var(--color-red-600); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                        <svg class="icon-large" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h3 style="margin-bottom: 0.75rem;">Community</h3>
+                    <p class="text-small text-muted">
+                        We build lasting relationships with clients based on trust and expertise.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point Blank - 404</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="error-container">
+        <div class="error-background"></div>
+        
+        <div class="error-content">
+            <!-- Logo -->
+            <div class="error-logo">
+                <div class="logo-icon">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                        <circle cx="12" cy="12" r="1" fill="currentColor"/>
+                        <line x1="12" y1="2" x2="12" y2="6" stroke-width="2"/>
+                        <line x1="12" y1="18" x2="12" y2="22" stroke-width="2"/>
+                        <line x1="2" y1="12" x2="6" y2="12" stroke-width="2"/>
+                        <line x1="18" y1="12" x2="22" y2="12" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="logo-text">POINT BLANK</div>
+            </div>
+
+            <!-- Error Icon -->
+            <div class="error-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+            </div>
+
+            <!-- Error Code -->
+            <h1 class="error-code">404</h1>
+            
+            <!-- Error Message -->
+            <h2 class="error-title">
+                {% if messages %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                {% else %}
+                    Even precision has limits. This page is one of them.
+                {% endif %}
+            </h2><br><br>
+
+            <!-- Quick Links -->
+            <div class="quick-links">
+                <h3 class="quick-links-title">Quick Links</h3>
+                <div class="quick-links-grid">
+                    <a href="/" class="quick-link-card">
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                        <span>Home</span>
+                    </a>
+                    <a href="arsenal" class="quick-link-card">
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                        </svg>
+                        <span>Arsenal</span>
+                    </a>
+                    <a href="cart" class="quick-link-card">
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                        <span>Cart</span>
+                    </a>
+                    <a href="contact" class="quick-link-card">
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                        </svg>
+                        <span>Contact Us</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Error Code -->
+            <div class="error-info">
+                <p class="text-tiny">
+                    Error Code: 404 | Page Not Found | <span id="currentTime"></span>
+                </p>
+                <p class="text-tiny">
+                    If you believe this is an error, please <a href="contact">contact support</a>
+                </p>
+            </div>
+
+            <!-- Auto Redirect Counter -->
+            <div class="redirect-notice" id="redirectNotice" style="display: none;">
+                <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span>Redirecting to home page in <strong id="countdown">10</strong> seconds...</span>
+                <button class="cancel-redirect" onclick="cancelRedirect()">CANCEL</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'script.js' %}></script>
+</body>
+</html>

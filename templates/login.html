@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point Blank - Login</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-background"></div>
+        
+        <div class="auth-box">
+            <!-- Logo -->
+            <div class="auth-logo">
+                <div class="auth-logo-icon">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                        <circle cx="12" cy="12" r="1" fill="currentColor"/>
+                        <line x1="12" y1="2" x2="12" y2="6" stroke-width="2"/>
+                        <line x1="12" y1="18" x2="12" y2="22" stroke-width="2"/>
+                        <line x1="2" y1="12" x2="6" y2="12" stroke-width="2"/>
+                        <line x1="18" y1="12" x2="22" y2="12" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="auth-logo-text">POINT BLANK</div>
+            </div>
+
+            <!-- Header -->
+            <div class="auth-header">
+                <h1 class="auth-title">Welcome Back</h1>
+                <p class="auth-subtitle">Sign in to your account to continue</p>
+            </div>
+
+            <!-- Success Message -->
+            <div id="successAlert" class="success-alert">
+                <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--color-green-600); flex-shrink: 0;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="success-alert-text">Login successful! Redirecting to home page...</span>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" method="post" class="auth-form" action="client_login">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="form-label">Email Address *</label>
+                    <input 
+                        type="email" 
+                        id="loginEmail" 
+                        name="email" 
+                        class="form-input" 
+                        placeholder="your@email.com"
+                        required
+                    >
+                    <span class="form-error" id="emailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password *</label>
+                    <input 
+                        type="password" 
+                        id="loginPassword" 
+                        name="password" 
+                        class="form-input" 
+                        placeholder="Enter your password"
+                        required
+                    >
+                    <span class="form-error" id="passwordError"></span>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <div class="checkbox-group" style="margin-bottom: 0;">
+                        <input type="checkbox" id="rememberMe" class="checkbox-input">
+                        <label for="rememberMe" class="checkbox-label">Remember me</label>
+                    </div>
+                    <div class="forgot-password" style="margin-bottom: 0;">
+                        <a href="#" id="forgotPassword">Forgot password?</a>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-large">
+                    <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
+                    </svg>
+                    SIGN IN
+                </button>
+            </form>
+            <!-- Divider -->
+            <div class="form-divider">
+                <div class="form-divider-line"></div>
+                <span class="form-divider-text">OR</span>
+                <div class="form-divider-line"></div>
+            </div>
+
+            <!-- Links -->
+            <div class="auth-links">
+                <p style="color: var(--color-zinc-400); margin-bottom: 1rem;">
+                    Don't have an account? <a href="register">Create Account</a>
+                </p>
+                <p style="color: var(--color-zinc-500); font-size: 0.75rem;">
+                    <a href="/" style="color: var(--color-zinc-500);">← Back to Home</a>
+                </p>
+            </div>
+
+            <!-- Security Notice -->
+            <div style="background-color: var(--color-zinc-950); border: 1px solid var(--color-zinc-800); border-radius: 0.375rem; padding: 1rem; margin-top: 1.5rem;">
+                <div style="display: flex; align-items: start; gap: 0.5rem;">
+                    <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--color-zinc-500); flex-shrink: 0; margin-top: 2px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                    </svg>
+                    <p class="text-tiny" style="color: var(--color-zinc-500); line-height: 1.5;">
+                        This is a demonstration login page. In production, all credentials would be encrypted and transmitted securely via HTTPS with proper authentication protocols.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    document.getElementById("forgotPassword").addEventListener("click", function (e) {
+        e.preventDefault();
+
+        Swal.fire({
+            title: "Reset Password",
+            text: "Contact Point Blank to reset your password.",
+            icon: "info",
+            showConfirmButton: true
+        }).then(() => {
+            window.location.href = "/contact";
+        });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

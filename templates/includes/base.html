@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point Blank - {% block pageTitle %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% block extraCSS %}{% endblock %}
+</head>
+<body>
+    {% include 'includes/header.html' %}
+
+    <!-- Main Content -->
+    <main id="mainContent">
+        <!-- Pages will be dynamically loaded here -->
+        {% block content %}{% endblock %}
+    </main>
+    
+    {% include 'includes/Footer.html' %}
+    <script src="{% static 'script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    {% block extraJS %}{% endblock %}
+</body>
+</html>

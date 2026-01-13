@@ -1,0 +1,174 @@
+{% extends 'includes/base.html' %}
+{% block pageTitle %}Contact Us{% endblock %}
+{% block content %}
+<div class="page">
+    <div style="background: linear-gradient(to right, var(--color-zinc-900), var(--color-black)); border-bottom: 1px solid var(--color-zinc-800); padding: 4rem 1rem;">
+        <div class="container">
+            <h1 style="margin-bottom: 1rem;">
+                Contact <span class="text-red">Point Blank</span>
+            </h1>
+            <p style="font-size: 1.25rem;" class="text-muted">
+                Have questions? Lock and load your emails to pointblank@contact.org we’re here to help with all your firearms needs.
+            </p>
+        </div>
+    </div>
+
+    <div class="container section">
+        <div class="contact-grid">
+            <!-- Contact Info -->
+            <div>
+                <div class="contact-info-box">
+                    <h2 style="color: white; margin-bottom: 1.5rem;">Get In Touch</h2>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 style="margin-bottom: 0.25rem;">Phone</h3>
+                            <p class="text-muted text-small">+91 9867945175</p>
+                            <p class="text-tiny" style="color: var(--color-zinc-500); margin-top: 0.25rem;">Mon-Sat: 9am - 7pm</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 style="margin-bottom: 0.25rem;">Email</h3>
+                            <p class="text-muted text-small">pointblank@contact.org</p>
+                            <p class="text-tiny" style="color: var(--color-zinc-500); margin-top: 0.25rem;">We respond within 24 hours</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 style="margin-bottom: 0.25rem;">Address</h3>
+                            <p class="text-muted text-small">
+                                51-B, Tughlakabad New Delhi,<br>
+                                India
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div style="grid-column: span 2;">
+                <div class="contact-info-box">
+                    <h3 style="color: white; margin-bottom: 1.5rem;">Self-Defence is the Best Offence</h3>
+                    <form action="contact_info" id="contactForm" method="post">
+                    {% csrf_token %}
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Your Name *</label>
+                                <input type="text" name="contact_name" class="form-input" id="contact_name" placeholder="Full Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email Address *</label>
+                                <input type="email" name="contact_email" class="form-input" id="contact_email" placeholder="Email Address" required>
+                            </div>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Phone Number (Optional)</label>
+                                <input type="tel" name="contact_phone" class="form-input" id="contact_phone" placeholder="+91 12345 67890">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Gun *</label>
+                                <select name="contact_subject" class="form-select" id="contact_subject" required>
+                                    <option value="">Select a Gun</option>
+                                    <option value="Glock 17">Glock 17</option>
+                                    <option value="Beretta 92FS">Beretta 92FS</option>
+                                    <option value="Colt M1911">Colt M1911</option>
+                                    <option value="Smith & Wesson M&P 9">Smith & Wesson M&P 9</option>
+                                    <option value="AR-15">AR-15</option>
+                                    <option value="AK-47">AK-47</option>
+                                    <option value="M1 Garand">M1 Garand</option>
+                                    <option value="Ruger Mini-14">Ruger Mini-14</option>
+                                    <option value="FN FAL">FN FAL</option>
+                                    <option value="Remington 870">Remington 870</option>
+                                    <option value="Mossberg 500">Mossberg 500</option>
+                                    <option value="Benelli M4">Benelli M4</option>
+                                    <option value="Winchester Model 1897">Winchester Model 1897</option>
+                                    <option value="Browning Citori">Browning Citori</option>
+                                    <option value="Barrett M82 (M107)">Barrett M82 (M107)</option>
+                                    <option value="FN Five-seven">FN Five-seven</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Message *</label>
+                            <textarea name="contact_message" class="form-textarea" id="contact_message" rows="6" placeholder="How can we help you?" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-large" >
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                            </svg>
+                            SEND MESSAGE
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div style="margin-top: 4rem;">
+            <h2 class="text-center" style="margin-bottom: 2rem;">
+                Frequently Asked <span class="text-red">Questions</span>
+            </h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 style="margin-bottom: 0.75rem;">How does firearm purchasing work at Point Blank?</h3>
+                    <p class="text-small text-muted text-align-justify">
+                        All firearm purchases are shipped to a licensed FFL dealer. The dealer will complete the required background check and finalize paperwork before legally taking possession.
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <h3 style="margin-bottom: 0.75rem;">What are the requirements to buy a firearm?</h3>
+                    <p class="text-small text-muted text-align-justify">
+                        Buyers must be at least 21 years old, present a valid government-issued photo ID, pass a federal background check, and comply with all applicable state and local firearm laws.
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <h3 style="margin-bottom: 0.75rem;">How long does Point Blank take to ship orders?</h3>
+                    <p class="text-small text-muted text-align-justify">
+                        Orders are processed within one to three business days after purchase. Shipping time to your selected FFL dealer typically ranges between three and seven business days.
+                    </p>
+                </div>
+                <div class="faq-item">
+                    <h3 style="margin-bottom: 0.75rem;">What gunsmithing services does Point Blank offer?</h3>
+                    <p class="text-small text-muted text-align-justify">
+                        Point Blank’s certified gunsmiths provide professional services including firearm cleaning, repairs, upgrades, customization, and performance modifications.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extraJS %}
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: "Success",
+                text: "Point Blank will contact you Soon!",
+                icon: "success",
+                showConfirmButton: true
+            }).then(() => {
+                this.submit();
+            });
+        });
+    </script>
+{% endblock %}

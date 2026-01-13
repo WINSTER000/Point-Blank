@@ -1,0 +1,69 @@
+{% extends 'includes/base.html' %}
+{% block pageTitle %}Payment{% endblock %}
+
+{% block extraCSS %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+<style>
+    body { background-color: black; }
+    h1 { color: white; height: 52pc; margin: 20px; }
+</style>
+{% endblock %}
+
+{% block content %}
+<main id="mainContent">
+    <center><h1>Processing Payment...</h1></center>
+</main>
+{% endblock %}
+
+{% block extraJS %}
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+    if ("{{ amount }}" && "{{ order_id }}") {
+        var options = {
+            "key": "{{ RAZORPAY_KEY_ID }}",
+            "amount": "{{ amount }}",
+            "currency": "INR",
+            "name": "Point Blank",
+            "description": "Our Trigger Your Aim",
+            "order_id": "{{ order_id }}",
+            "handler": function (response){
+                // Send POST to success view
+                var form = document.createElement("form");
+                form.method = "POST";
+                form.action = "success";
+                form.innerHTML = `
+                    <input type="hidden" name="razorpay_payment_id" value="${response.razorpay_payment_id}" />
+                    <input type="hidden" name="razorpay_order_id" value="${response.razorpay_order_id}" />
+                    <input type="hidden" name="razorpay_signature" value="${response.razorpay_signature}" />
+                    <input type="hidden" name="amount" value="{{ amount }}" />
+                `;
+                document.body.appendChild(form);
+                form.submit();
+            },
+            "prefill": {
+                "name": "{{ username }}",
+                "contact": "{{ phone }}",
+                "email": "{{ email }}"
+            },
+            "theme": { "color": "#000" },
+            "modal": {
+                "ondismiss": function(){
+                    //window.location.href = "failure";
+                    var formf = document.createElement("form");
+                    formf.method = "POST";
+                    formf.action = "failure";
+                    formf.innerHTML = `
+                        <input type="hidden" name="amount" value="{{ amount }}" />
+                    `;
+                    document.body.appendChild(formf);
+                    formf.submit();
+                }
+            }
+        };
+        var rzp = new Razorpay(options);
+        rzp.open();
+    } else {
+        alert("Payment details missing!");
+    }
+</script>
+{% endblock %}

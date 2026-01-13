@@ -1,0 +1,56 @@
+{% extends 'includes/base.html' %}
+{% block pageTitle %}Arsenal{% endblock %}
+{% block content %}
+<div class="page">
+    <div style="background: linear-gradient(to right, var(--color-zinc-900), var(--color-black)); border-bottom: 1px solid var(--color-zinc-800); padding: 3rem 1rem; margin-bottom: 2rem;">
+        <div class="container">
+            <h2 style="margin-bottom: 1rem;">
+                <!-- Our <span class="text-red">Arsenal</span> -->
+                Secure Your <span class="text-red">Rights</span>. Protect Your Peace
+            </h2>
+            <p class="text-muted" style="max-width: 60rem;">
+                Point Blank is authorized and empowered by the <b>National Rifle Association of India</b> and recognized by the Government of India to conduct legal trade and sales of firearms and related accessories.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Filters -->
+            <h2 style="margin-bottom: 2rem;">
+                Our <span class="text-red">Arsenal</span>
+            </h2>
+
+        <!-- Products -->
+        <div class="product-grid" style="margin-bottom: 3rem;">
+            {% for i in firearms %}
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="media/{{ i.firearms_image }}" alt="{{ i.firearms_name }}">
+                </div>
+                <div class="product-info">
+                    <div class="product-name text-center">{{ i.firearms_name }}</div>
+                    <div class="product-caliber">{{ i.firearms_caliber }}</div>
+                    <div class="product-footer">
+                        <span class="product-price"><span style="font-size: 1.1rem;">₹</span>{{ i.firearms_price }}</span>
+                        <a href="firearm_details?id={{i.id}}" target="blank" class="anchor-underline"><button class="product-link">
+                            VIEW
+                            <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </button></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="filter-section product-filter">
+            <div class="product_slogan">
+                Our <span class="text-red">Trigger</span> Your Aim
+            </div>
+            <div class="product_filter_show">
+                Showing <span class="text-red">{{ total_Firearms }}</span> of {{ total_Firearms }} products
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

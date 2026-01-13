@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point Blank - Success</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-background"></div>
+        
+        <div class="success-content">
+            <!-- Success Animation -->
+            <div class="success-animation">
+                <div class="success-circle">
+                    <svg class="success-checkmark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Success Message -->
+            <h1 class="success-title">Payment Successful!</h1>
+            <p class="success-message">
+                Thank you for your purchase. Your order has been confirmed and will be processed shortly.
+            </p>
+
+            <!-- Order Details -->
+            <div class="order-summary">
+                <div class="order-summary-header">
+                    <h2>Order Summary</h2>
+                    <span class="order-status">CONFIRMED</span>
+                </div>
+
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Order ID:</span>
+                    <span class="order-detail-value" id="orderNumber">{{ order_id }}</span>
+                </div>
+
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Payment ID:</span>
+                    <span class="order-detail-value" id="orderDate">{{ payment_id }}</span>
+                </div>
+
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Total Amount:</span>
+                    <span class="order-detail-value order-total" id="orderTotal">₹{{ amount }}</span>
+                </div>
+
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Email:</span>
+                    <span class="order-detail-value" id="customerEmail">{{ email }}</span>
+                </div>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="next-steps">
+                <h3>What Happens Next?</h3>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Order Confirmation</h4>
+                            <p>You'll receive an email confirmation with your order details shortly.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Background Check</h4>
+                            <p>Firearm purchases require ATF background check through your FFL dealer.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>FFL Transfer</h4>
+                            <p>Your order will be shipped to your designated FFL dealer for pickup.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Pick Up</h4>
+                            <p>Complete paperwork and pickup your order at the FFL dealer location.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Legal Notice -->
+            <div class="legal-notice">
+                <div class="legal-notice-content">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <div class="text-small">
+                        <strong>Important:</strong> All firearm sales are subject to federal and state laws. You must pass a background check and complete all required paperwork at your FFL dealer. Processing time is typically 3-5 business days after background check approval.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn btn-outline btn-large" onclick="printReceipt()">
+                    <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+                    </svg>
+                    PRINT RECEIPT
+                </button>
+                <a href="profile" class="btn btn-secondary btn-large">
+                    <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                    </svg>
+                    PROFILE
+                </a>
+                <a href="arsenal" class="btn btn-primary btn-large">
+                    <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                    </svg>
+                    BROWSE ARSENAL
+                </a>
+            </div>
+
+            <!-- Support Section -->
+            <div class="support-section">
+                <h3>Need Help?</h3>
+                <p class="text-muted mb-3">
+                    Our customer support team is here to assist you with any questions about your order.
+                </p>
+                <div class="support-options">
+                    <a href="mailto:pointblank@contact.org" class="support-option">
+                        <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <span>pointblank@contact.org</span>
+                    </a>
+                    <a href="tel:9867945175" class="support-option">
+                        <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                        </svg>
+                        <span>+91 9867945175</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Social Proof -->
+            <div class="social-proof">
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                        <span>Secure Payment</span>
+                    </div>
+                    <div class="trust-badge">
+                        <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                        <span>SSL Encrypted</span>
+                    </div>
+                    <div class="trust-badge">
+                        <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                        <span>FFL Licensed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="payment-success.js"></script>
+    <script>
+        function printReceipt() {
+            window.print();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Point Blank - Register</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-background"></div>
+        
+        <div class="auth-box">
+            <!-- Logo -->
+            <div class="auth-logo">
+                <div class="auth-logo-icon">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                        <circle cx="12" cy="12" r="1" fill="currentColor"/>
+                        <line x1="12" y1="2" x2="12" y2="6" stroke-width="2"/>
+                        <line x1="12" y1="18" x2="12" y2="22" stroke-width="2"/>
+                        <line x1="2" y1="12" x2="6" y2="12" stroke-width="2"/>
+                        <line x1="18" y1="12" x2="22" y2="12" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="auth-logo-text">POINT BLANK</div>
+            </div>
+
+            <!-- Header -->
+            <div class="auth-header">
+                <h1 class="auth-title">Create Account</h1>
+                <p class="auth-subtitle">Join Point Blank for exclusive access to premium firearms</p>
+            </div>
+
+            <!-- Age Warning -->
+            <div class="age-warning">
+                <div class="age-warning-content">
+                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--color-red-500); flex-shrink: 0;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                    </svg>
+                    <div class="age-warning-text">
+                        <strong>AGE REQUIREMENT:</strong> You must be 21 years of age or older to register and purchase firearms. By creating an account, you certify that you meet all legal requirements.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Message -->
+            <div id="successAlert" class="success-alert">
+                <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--color-green-600); flex-shrink: 0;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <span class="success-alert-text">Registration successful! Redirecting to Point Blank...</span>
+            </div>
+
+            <!-- Registration Form -->
+            <form id="registerForm" class="auth-form" action="client_register" method="post">
+                {% csrf_token %}
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">First Name *</label>
+                        <input 
+                            type="text" 
+                            id="firstName" 
+                            name="firstName" 
+                            class="form-input" 
+                            placeholder="First Name"
+                            required
+                        >
+                        <span class="form-error" id="firstNameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Last Name *</label>
+                        <input 
+                            type="text" 
+                            id="lastName" 
+                            name="lastName" 
+                            class="form-input" 
+                            placeholder="Last Name"
+                            required
+                        >
+                        <span class="form-error" id="lastNameError"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email Address *</label>
+                    <input 
+                        type="email" 
+                        id="registerEmail" 
+                        name="email" 
+                        class="form-input" 
+                        placeholder="user@email.com"
+                        required
+                    >
+                    <span class="form-error" id="emailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Phone Number *</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        class="form-input" 
+                        placeholder="+91 12345 67890"
+                        required
+                    >
+                    <span class="form-error" id="phoneError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Date of Birth *</label>
+                    <input 
+                        type="date" 
+                        id="dateOfBirth" 
+                        name="dateOfBirth" 
+                        class="form-input"
+                        required
+                    >
+                    <span class="form-error" id="dobError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Password (Only 20 characters) *</label>
+                    <input 
+                        type="password" 
+                        id="registerPassword" 
+                        name="password" 
+                        class="form-input" 
+                        maxlength="20"
+                        placeholder="Create a strong password"
+                        oninput="checkPasswordStrength()"
+                        required
+                    >
+                    <div class="password-strength">
+                        <div class="strength-bar">
+                            <div id="strengthFill" class="strength-fill"></div>
+                        </div>
+                        <span id="strengthText" class="text-muted text-tiny"></span>
+                    </div>
+                    <span class="form-error" id="passwordError"></span>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="ageConfirm" class="checkbox-input" required>
+                    <label for="ageConfirm" class="checkbox-label">
+                        I certify that I am <strong>21 years of age or older</strong> and legally permitted to purchase firearms and ammunition in my jurisdiction.
+                    </label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="termsConfirm" class="checkbox-input" required>
+                    <label for="termsConfirm" class="checkbox-label">
+                        I agree to the <a href="#" style="color: var(--color-red-600);">Terms of Service</a> and <a href="#" style="color: var(--color-red-600);">Privacy Policy</a>, and understand all firearm purchases require background checks and FFL compliance.
+                    </label>
+                </div>
+
+                <div class="checkbox-group" style="margin-bottom: 1.5rem;">
+                    <input type="checkbox" id="newsletter" class="checkbox-input">
+                    <label for="newsletter" class="checkbox-label">
+                        I want to receive promotional emails about new products, sales, and safety tips (optional).
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-large">
+                    <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/>
+                    </svg>
+                    CREATE ACCOUNT
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="form-divider">
+                <div class="form-divider-line"></div>
+                <span class="form-divider-text">OR</span>
+                <div class="form-divider-line"></div>
+            </div>
+
+            <!-- Links -->
+            <div class="auth-links">
+                <p style="color: var(--color-zinc-400); margin-bottom: 1rem;">
+                    Already have an account? <a href="login">Sign In</a>
+                </p>
+                <p style="color: var(--color-zinc-500); font-size: 0.75rem;">
+                    <a href="/" style="color: var(--color-zinc-500);">← Back to Home</a>
+                </p>
+            </div>
+
+            <!-- Security Notice -->
+            <div style="background-color: var(--color-zinc-950); border: 1px solid var(--color-zinc-800); border-radius: 0.375rem; padding: 1rem; margin-top: 1.5rem;">
+                <div style="display: flex; align-items: start; gap: 0.5rem;">
+                    <svg class="icon-small" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--color-zinc-500); flex-shrink: 0; margin-top: 2px;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                    </svg>
+                    <p class="text-tiny" style="color: var(--color-zinc-500); line-height: 1.5;">
+                        <strong>Privacy & Security:</strong> Your information is protected with industry-standard encryption. We never share your personal data.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkPasswordStrength() {
+            const password = document.getElementById('registerPassword').value;
+            const strengthFill = document.getElementById('strengthFill');
+            const strengthText = document.getElementById('strengthText');
+            
+            let strength = 0;
+            
+            if (password.length >= 8) strength++;
+            if (password.match(/[a-z]/) && password.match(/[A-Z]/)) strength++;
+            if (password.match(/[0-9]/)) strength++;
+            if (password.match(/[^a-zA-Z0-9]/)) strength++;
+            
+            strengthFill.className = 'strength-fill';
+            
+            if (password.length === 0) {
+                strengthText.textContent = '';
+            } else if (strength <= 1) {
+                strengthFill.classList.add('strength-weak');
+                strengthText.textContent = 'Weak password';
+                strengthText.style.color = '#ef4444';
+            } else if (strength <= 2) {
+                strengthFill.classList.add('strength-medium');
+                strengthText.textContent = 'Medium strength';
+                strengthText.style.color = '#f59e0b';
+            } else {
+                strengthFill.classList.add('strength-strong');
+                strengthText.textContent = 'Strong password';
+                strengthText.style.color = '#22c55e';
+            }
+        }
+
+        document.getElementById("registerForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: "Success",
+                text: "Account created Successfully. Please Log In!",
+                icon: "success",
+                showConfirmButton: true
+            }).then(() => {
+                this.submit();
+            });
+        });
+
+        document.getElementById("dateOfBirth").max = new Date(
+            new Date().setFullYear(new Date().getFullYear() - 21)
+        ).toISOString().split("T")[0];
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
