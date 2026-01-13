@@ -1,0 +1,8 @@
+#Install Django
+pip install Django==4.2
+
+#Install MySQL
+pip install mysqlclient
+
+#Install Razorpay
+pip install razorpay
