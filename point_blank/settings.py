@@ -94,19 +94,23 @@ TEMPLATES = [
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
 
-if not DATABASE_URL:
-    raise RuntimeError(
-        "DATABASE_URL environment variable is not set. "
-        "Add the Internal Database URL from your Render PostgreSQL "
-        "database to your Render Web Service environment variables."
-    )
+print("DATABASE_URL FOUND:", bool(DATABASE_URL))
 
-DATABASES = {
-    "default": dj_database_url.parse(
-        DATABASE_URL,
-        conn_max_age=600,
-    )
-}
+if DATABASE_URL:
+    DATABASES = {
+        "default": dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=600,
+        )
+    }
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": BASE_DIR / "db.sqlite3",
+        }
+    }
+
 
 
 # ============================================================
