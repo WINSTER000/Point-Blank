@@ -69,36 +69,6 @@ The template collection also includes:
 
 ---
 
-# 🖥️ UI Screenshots
-
-> **Note:** The preview images below are generated UI previews based on the current repository's page structure and styling. They are included to make the GitHub README visually complete. For exact browser captures of a deployed instance, replace them with live screenshots from the running site.
-
-### 🏠 Home
-
-![Point Blank Home](screenshots/home.png)
-
-The home template contains the main hero, navigation, trust indicators, and a featured firearms section. citeturn3view0
-
-### 🔫 Arsenal / Product Catalog
-
-![Point Blank Arsenal](screenshots/arsenal.png)
-
-The Arsenal page is the primary product browsing interface for the catalog. citeturn3view1
-
-### 📋 Product Details
-
-![Point Blank Product Details](screenshots/firearm-details.png)
-
-The product detail workflow is backed by a Django model containing product specifications and pricing information. citeturn3view2turn4view1
-
-### 🛒 Cart
-
-![Point Blank Cart](screenshots/cart.png)
-
-The repository includes a dedicated cart template as part of the shopping workflow. citeturn3view3
-
----
-
 ## 🛠️ Technology Stack
 
 | Technology | Purpose |
