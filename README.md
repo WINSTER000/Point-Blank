@@ -10,9 +10,9 @@
 
 ## 🌐 Overview
 
-**Point Blank** is a Django-based web application built around a modern firearm catalog and shopping workflow. The repository contains a dedicated `firearms` Django app, a `point_blank` project, reusable templates, static assets, product media, contact pages, authentication pages, cart and payment pages, and a SQLite database. citeturn0view0turn2view1turn2view2
+**Point Blank** is a Django-based web application built around a modern firearm catalog and shopping workflow. The repository contains a dedicated `firearms` Django app, a `point_blank` project, reusable templates, static assets, product media, contact pages, authentication pages, cart and payment pages, and a SQLite database. 
 
-The home page is designed around a strong hero section, featured products, trust indicators, and navigation to the product catalog. The current template also includes an age-verification gate and messaging around legal compliance. citeturn3view0
+The home page is designed around a strong hero section, featured products, trust indicators, and navigation to the product catalog. The current template also includes an age-verification gate and messaging around legal compliance.
 
 ---
 
@@ -24,14 +24,14 @@ The home page is designed around a strong hero section, featured products, trust
 - Product cards with pricing and caliber information
 - Navigation to the catalog and information pages
 - Age-verification interface
-- Trust indicators and compliance messaging citeturn3view0
+- Trust indicators and compliance messaging
 
 ### 🔫 Product Catalog
 - Dedicated Arsenal/catalog page
 - Product listing cards
 - Firearm names, caliber, and pricing
 - Individual product detail pages
-- Product media stored in the repository citeturn3view1turn5view0
+- Product media stored in the repository
 
 ### 📋 Product Details
 The product model stores fields for:
@@ -47,7 +47,7 @@ The product model stores fields for:
 - Weight
 - Finish
 - Action
-- Added date citeturn4view1
+- Added date 
 
 ### 🛒 Shopping Workflow
 The project includes dedicated templates for:
@@ -57,7 +57,7 @@ The project includes dedicated templates for:
 - Failure
 - Login
 - Registration
-- Profile citeturn2view2
+- Profile
 
 ### 📞 Additional Pages
 The template collection also includes:
@@ -65,7 +65,7 @@ The template collection also includes:
 - Contact
 - 404 page
 - Authentication pages
-- Product detail page citeturn2view2
+- Product detail page
 
 ---
 
@@ -81,7 +81,7 @@ The template collection also includes:
 | **JavaScript** | Client-side interactions |
 | **Django Templates** | Dynamic page rendering |
 
-The repository is structured as a Django project with `manage.py`, `requirements.txt`, the `point_blank` project, and a dedicated `firearms` application. citeturn0view0turn2view1
+The repository is structured as a Django project with `manage.py`, `requirements.txt`, the `point_blank` project, and a dedicated `firearms` application. 
 
 ---
 
@@ -130,7 +130,7 @@ Point-Blank/
 └── README.md
 ```
 
-The current repository contains the Django app, templates, media, static assets, SQLite database, `manage.py`, and dependency file shown above. citeturn0view0turn2view2
+The current repository contains the Django app, templates, media, static assets, SQLite database, `manage.py`, and dependency file shown above.
 
 ---
 
@@ -193,7 +193,7 @@ The project currently includes a SQLite database:
 db.sqlite3
 ```
 
-The `Firearms` model contains structured product information including pricing, descriptions, ammunition details, caliber, dimensions, weight, finish, action, and creation date. citeturn4view1
+The `Firearms` model contains structured product information including pricing, descriptions, ammunition details, caliber, dimensions, weight, finish, action, and creation date.
 
 For production use, database configuration should be reviewed and a production-grade database should generally be considered instead of committing a development SQLite database.
 
@@ -205,7 +205,7 @@ This project is presented as a **web-development / e-commerce demonstration**.
 
 Any real-world sale, purchase, transfer, shipping, or possession of regulated products must comply with all applicable laws and regulations in the relevant jurisdiction.
 
-The website template itself includes age-verification and legal-compliance messaging. citeturn3view0
+The website template itself includes age-verification and legal-compliance messaging.
 
 This repository documentation does not provide instructions for acquiring, modifying, manufacturing, or using weapons.
 
